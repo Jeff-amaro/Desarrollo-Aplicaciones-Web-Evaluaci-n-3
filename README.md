@@ -1,4 +1,4 @@
-# Laboratorio 01: Sistema de gestión de citas médicas
+#Evaluacion 3 : Sistema de gestión de citas médicas
 
 **Estudiante:** Jeff Amaro | **Sección:** C24A
 
