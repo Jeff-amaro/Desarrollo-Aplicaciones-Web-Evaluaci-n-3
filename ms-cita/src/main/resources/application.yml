@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: ms-cita
+  profiles:
+    active: dev
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/bd_cita?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=America/Lima&allowPublicKeyRetrieval=true
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 8083
+servicios:
+  paciente-url: http://localhost:8081
+  medico-url: http://localhost:8082
+  validar-referencias: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/bd_cita?useSSL=true&serverTimezone=America/Lima
+    username: ${DB_USER}
+    password: ${DB_PASS}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+server:
+  port: 8083
+servicios:
+  paciente-url: ${PACIENTE_URL}
+  medico-url: ${MEDICO_URL}
+  validar-referencias: true
